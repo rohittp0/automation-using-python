@@ -10,7 +10,7 @@ def round_crop(image_path, output_path):
     # Create same size alpha layer with circle
     alpha = Image.new('L', img.size, 0)
     draw = ImageDraw.Draw(alpha)
-    draw.pieslice([0, 0, h, w], 0, 360, fill=255)
+    draw.pieslice([0, 0, w, w], 0, 360, fill=255)
 
     # Convert alpha Image to numpy array
     npAlpha = np.array(alpha)
@@ -21,3 +21,5 @@ def round_crop(image_path, output_path):
     # Save with alpha
     Image.fromarray(npImage).save(output_path)
 
+
+round_crop("assets/pic.png", "assets/pic_round.png")

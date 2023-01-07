@@ -14,8 +14,10 @@ def draw_text(image, text, position):
     return image
 
 
-img = Image.open("assets/certificate.jpg")
+names = ["Rohit", "Sunith"]
 
-draw_text(img, "Rohit T P", (650, 520))
+for name in names:
+    img = Image.open("assets/certificate.jpg")
+    draw_text(img, name, (650, 520))
+    img.save(f"{name}.jpg")
 
-img.show("preview")
