@@ -1,7 +1,6 @@
 from PIL import ImageDraw, ImageFont, Image
-import csv
 
-from data import data, data_spot
+from data import data
 
 
 def draw_text(image, text, position):
@@ -17,7 +16,7 @@ def draw_text(image, text, position):
     return image
 
 
-for mail, name in data_spot:
+for name, mail in data:
     img = Image.open("assets/certificate.png")
     draw_text(img, name.title(), (1150, 950))
     img.save(f"out/{mail}.png")

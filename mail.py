@@ -1,5 +1,4 @@
 import base64
-import math
 import mimetypes
 import os
 from email.message import EmailMessage
@@ -7,12 +6,12 @@ from random import random
 from time import sleep
 
 from google.oauth2.credentials import Credentials
-from google.auth.transport import Request
+from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from data import data, data_spot
+from data import data
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.compose']
 
@@ -99,9 +98,9 @@ def main():
     creds = get_cred()
     service = build('gmail', 'v1', credentials=creds)
 
-    print('Sending emails... ' + str(len(data_spot)))
+    print('Sending emails... ' + str(len(data)))
 
-    for email, name in data_spot:
+    for name, email in data:
         print(email)
         gmail_create_draft_with_attachment(service, email, name)
         sleep(random() * 2)
