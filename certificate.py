@@ -1,7 +1,5 @@
 from PIL import ImageDraw, ImageFont, Image
 
-from data import data
-
 
 def draw_text(image, text, position):
     draw = ImageDraw.Draw(image)
@@ -16,7 +14,7 @@ def draw_text(image, text, position):
     return image
 
 
-for name, mail in data:
+for name, mail in [("Ms. Rekha Mathew", "Rekha"), ("Dr. Sr. Priya Antony", "Priya")]:
     img = Image.open("assets/certificate.png")
     draw_text(img, name.title(), (1150, 950))
     img.save(f"out/{mail}.png")
